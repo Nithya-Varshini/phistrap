@@ -16,7 +16,6 @@ class _LogInState extends State<LogIn> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  String _loginMessage = '';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -27,34 +26,10 @@ class _LogInState extends State<LogIn> {
   }
 
   Future<void> _signInWithEmailAndPassword() async {
-    //   try {
-    //     UserCredential userCredential =
-    //         await FirebaseAuth.instance.signInWithEmailAndPassword(
-    //       email: _emailController.text.trim(),
-    //       password: _passwordController.text.trim(),
-    //     );
-    //     print("${_emailController.text}");
-    //     print("${_passwordController.text}");
-    //     print("success");
-
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => HomePage()),
     );
-    //   } on FirebaseAuthException catch (e) {
-    //     setState(() {
-    //       _loginMessage = e.message ?? 'An error occurred';
-    //     });
-
-    //     if (e.code == 'wrong-password') {
-    //       ScaffoldMessenger.of(context).showSnackBar(
-    //         SnackBar(
-    //           content: Text('You have entered a wrong password.'),
-    //           duration: Duration(seconds: 3),
-    //         ),
-    //       );
-    //     }
-    //   }
   }
 
   @override
@@ -99,14 +74,14 @@ class _LogInState extends State<LogIn> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                            color: Color(0xFF002D56), // Set the border color
+                            color: Color(0xFF002D56), 
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                            width: 2.5, // Set the border thickness
-                            color: Color(0xFF002D56), // Set the border color
+                            width: 2.5, 
+                            color: Color(0xFF002D56), 
                           ),
                         ),
                         contentPadding:
@@ -129,14 +104,14 @@ class _LogInState extends State<LogIn> {
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
                             width: 5,
-                            color: Color(0xFF002D56), // Set the border color
+                            color: Color(0xFF002D56), 
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           borderSide: BorderSide(
-                            width: 2.5, // Set the border thickness
-                            color: Color(0xFF002D56), // Set the border color
+                            width: 2.5, 
+                            color: Color(0xFF002D56), 
                           ),
                         ),
                         contentPadding:

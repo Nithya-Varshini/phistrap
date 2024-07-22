@@ -13,7 +13,7 @@ class _CallLogScreenState extends State<CallLogScreen> {
   List<CallLogEntry> filteredLogs = [];
   bool isFilterApplied = false;
   CallType? selectedCallType;
-  bool isDarkThemeEnabled = false; // Variable to track the state of the theme
+  bool isDarkThemeEnabled = false; 
 
   @override
   void initState() {
@@ -65,8 +65,8 @@ class _CallLogScreenState extends State<CallLogScreen> {
             iconColor = Colors.red;
             leadingIcon = Icons.call_missed;
           } else {
-            iconColor = Color(0xFF000000); // Default color for unknown types
-            leadingIcon = Icons.call; // Default icon for unknown types
+            iconColor = Color(0xFF000000); 
+            leadingIcon = Icons.call; 
           }
 
           return Card(
@@ -82,8 +82,7 @@ class _CallLogScreenState extends State<CallLogScreen> {
                 leadingIcon,
                 color: iconColor,
               ),
-              // trailing:
-              //     ElevatedButton(onPressed: () {}, child: Text("Report Spam")),
+              
               title:
                   Text('${log.name ?? 'Unknown'} : ${log.number ?? 'Unknown'}'),
               subtitle: Column(
@@ -105,13 +104,13 @@ class _CallLogScreenState extends State<CallLogScreen> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Colors
-                          .white, // Set the background color to transparent
-                      onPrimary: Colors.black, // Set the text color to black
+                      foregroundColor: Colors.black,
+                      backgroundColor:
+                          Colors.white, 
                       side: BorderSide(
-                          color: Colors.red), // Set the border color to red
+                          color: Colors.red), 
                       minimumSize: Size(0,
-                          30), // Set the minimum size to make it as small as possible
+                          30),
                     ),
                     child: Text("Report Spam"),
                   ),
@@ -125,56 +124,8 @@ class _CallLogScreenState extends State<CallLogScreen> {
   }
 
   Future<void> _refreshData() async {
-    _clearFilter(); // Clear any applied filter
-    await _loadCallLogs(); // Reload call logs
-  }
-
-  void _showFilterDialog() async {
-    final selectedValue = await showDialog<CallType>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Filter Call Type'),
-          content: DropdownButtonFormField<CallType>(
-            value: selectedCallType,
-            items: [
-              DropdownMenuItem(
-                value: CallType.incoming,
-                child: Text('Incoming Calls'),
-              ),
-              DropdownMenuItem(
-                value: CallType.outgoing,
-                child: Text('Outgoing Calls'),
-              ),
-              DropdownMenuItem(
-                value: CallType.missed,
-                child: Text('Missed Calls'),
-              ),
-            ],
-            onChanged: (value) {
-              setState(() {
-                selectedCallType = value;
-              });
-            },
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                _applyFilter();
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
+    _clearFilter(); 
+    await _loadCallLogs(); 
   }
 
   void _applyFilter() {
@@ -190,8 +141,8 @@ class _CallLogScreenState extends State<CallLogScreen> {
   void _clearFilter() {
     setState(() {
       isFilterApplied = false;
-      selectedCallType = null; // Clear selected call type
-      filteredLogs.clear(); // Clear filtered logs
+      selectedCallType = null; 
+      filteredLogs.clear(); 
     });
   }
 
