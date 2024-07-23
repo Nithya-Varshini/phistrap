@@ -95,7 +95,7 @@ class _LinkPageState extends State<LinkPage> {
   Future<void> _sendRequest(String url) async {
     try {
       var response = await http.post(
-        Uri.parse('http://172.31.98.196:4000'),
+        Uri.parse('https://phising-url-api.onrender.com/'),
         body: json.encode({'url': url}),
         headers: {'Content-Type': 'application/json'},
       );

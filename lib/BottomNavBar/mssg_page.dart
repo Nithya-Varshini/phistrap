@@ -44,7 +44,7 @@ class _SMSPageState extends State<SMSPage> {
     try {
       for (var message in _messages) {
         final response = await http.post(
-          Uri.parse('http://172.31.98.196:80/predict'),
+          Uri.parse('https://spam-detection-api-0r5c.onrender.com/predict'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
           },
